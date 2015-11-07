@@ -1,4 +1,4 @@
-from .map import Map
+from greengraph.map import Map
 
 import numpy as np
 import geopy
