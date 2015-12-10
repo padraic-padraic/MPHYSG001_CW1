@@ -17,16 +17,10 @@ class Greengraph(object):
         lats = np.linspace(start[0], end[0], steps)
         longs = np.linspace(start[1],end[1], steps)
         return np.vstack([lats, longs]).transpose()
+    
     def green_between(self, steps):
         return [Map(*location).count_green()
                 for location in self.location_sequence(
                 self.geolocate(self.start),
                 self.geolocate(self.end),
                 steps)]
-
-
-if __name__ == '__main__':
-    from matplotlib import pyplot as plt
-    mygraph=Greengraph('New York','Chicago')
-    data = mygraph.green_between(20)
-    plt.plot(data)
