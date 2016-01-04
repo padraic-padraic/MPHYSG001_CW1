@@ -17,6 +17,8 @@ class Greengraph(object):
 
     def location_sequence(self, start,end,steps):
         """Break the distance between the <start> and <end> locations into <steps> steps."""
+        if any([abs(point) > 90. for point in start]) or any([abs(point) > 90. for point in end]):
+            raise ValueError('Invalid coordinates')
         lats = np.linspace(start[0], end[0], steps)
         longs = np.linspace(start[1],end[1], steps)
         return np.vstack([lats, longs]).transpose()
