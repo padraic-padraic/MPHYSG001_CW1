@@ -4,9 +4,9 @@ from matplotlib import pyplot as plt
 
 import argparse
 
-def is_intstring(s):
+def is_fltstring(s):
     try:
-        int(s)
+        float(s)
         return True
     except ValueError:
         return False
@@ -29,9 +29,9 @@ parser.add_argument("-s", "--steps", dest='steps', help="Number of steps", type=
 
 def process():
     args = parser.parse_args()
-    graph = Greengraph(args.start, args.end)
-    if not is_intstring(args.start) or not is_intstring(args.end):
+    if not is_fltstring(args.start) or not is_fltstring(args.end):
         raise TypeError('Invalid Start/End Location. Is it a place name?')
+    graph = Greengraph(args.start, args.end)
     if args.save_png:
         points = graph.location_sequence(graph.geolocate(graph.start),
                                          graph.geolocate(graph.end),

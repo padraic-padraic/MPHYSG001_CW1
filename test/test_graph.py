@@ -1,8 +1,8 @@
 from greengraph.graph import Greengraph
-# from nose.tools import assert_equal
+from itertools import combinations_with_replacement
 from nose.tools import assert_almost_equal
 from nose.tools import assert_raises
-# from nose.tools import with_setup
+from mock import patch
 
 graph =  Greengraph('London', 'Chiacago')
 
@@ -19,3 +19,17 @@ def test_coodinates():
         graph.location_sequence((100.,0.),(45.,45.),20)
     with assert_raises(ValueError):
         graph.location_sequence((-100.,0.),(45.,45.),20)
+
+def test_location_sequence():
+    points = Greengraph.location_sequence(Greengraph('London','Chicago'),
+                                         (10.,10.), (20.,20.), 10)
+    diffs = [points[i][0] - points[i-1][0] for i in range(1,10)]
+    for diff1, diff2 in combinations_with_replacement(diffs, 2):
+        assert_almost_equal(diff1, diff2)
+    for diff in diffs:
+        assert_almost_equal(diff, ((20.-10.)/9))
+
+@patch('greengraph.google_map.Map.count_green')
+def test_green_between(mock_map):
+    Greengraph('London','Chicago').green_between(1)
+    assert mock_map.called
