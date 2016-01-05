@@ -35,8 +35,8 @@ def do_the_thing(args):
     else:
         green = graph.green_between(args.steps)
     plt.plot(graph.green_between(args.steps))
-    plt.show()
     plt.savefig(args.filename+'.png')
+    plt.show()
 
 def process():
     args = parser.parse_args()

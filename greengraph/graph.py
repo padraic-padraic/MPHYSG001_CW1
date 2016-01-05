@@ -13,7 +13,12 @@ class Greengraph(object):
 
     def geolocate(self, place):
         """Return the Google geocode of a given place name."""
-        res = self.geocoder.geocode(place,exactly_one=False)
+        try:
+            res = self.geocoder.geocode(place,exactly_one=False)
+        except geopy.exc.GeocoderQuotaExceeded:
+            raise RuntimeError('API Limit exceeded. Try again later!')
+        except:
+            raise RuntimeError('Error parsing the placename. Check your connectivity and try again later.')
         if res:
             return res[0][1]
         else:

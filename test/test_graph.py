@@ -1,4 +1,5 @@
 from greengraph import Greengraph
+
 from itertools import combinations_with_replacement
 from nose.tools import assert_almost_equal
 from nose.tools import assert_raises
@@ -23,6 +24,11 @@ def test_coodinates():
         graph.location_sequence((100.,0.),(45.,45.),20)
     with assert_raises(ValueError):
         graph.location_sequence((-100.,0.),(45.,45.),20)
+
+def test_limits():
+    with assert_raises(RuntimeError):
+        while True:
+            graph.geolocate('Lapland')
 
 def test_location_sequence():
     points = Greengraph.location_sequence(Greengraph('London','Chicago'),
