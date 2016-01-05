@@ -27,9 +27,8 @@ parser.add_argument("--save-maps", dest='save_png',
 parser.add_argument("-s", "--steps", dest='steps', help="Number of steps", type=int, 
                     default=20)
 
-def process():
-    args = parser.parse_args()
-    if not is_fltstring(args.start) or not is_fltstring(args.end):
+def do_the_thing(args):
+    if is_fltstring(args.start) or is_fltstring(args.end):
         raise TypeError('Invalid Start/End Location. Is it a place name?')
     graph = Greengraph(args.start, args.end)
     if args.save_png:
@@ -47,3 +46,8 @@ def process():
     plt.plot(graph.green_between(args.steps))
     plt.show()
     plt.savefig(args.fname+'.png')
+
+def process():
+    args = parser.parse_args()
+    do_the_thing(args)
+    
