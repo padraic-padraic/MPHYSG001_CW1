@@ -1,4 +1,4 @@
-from greengraph.graph import Greengraph
+from greengraph import Greengraph
 from itertools import combinations_with_replacement
 from nose.tools import assert_almost_equal
 from nose.tools import assert_raises
@@ -13,6 +13,10 @@ def test_geolocate():
     points = zip(start,true_start) + zip(end,true_end)
     for point, true_point in points:
         assert_almost_equal(point, true_point, 3)
+
+def test_geocoder():
+    with assert_raises(ValueError):
+        graph.geolocate('hjkbjhild') == None
 
 def test_coodinates():
     with assert_raises(ValueError):
