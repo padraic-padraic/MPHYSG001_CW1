@@ -41,7 +41,7 @@ def process():
             _m = Map(*point)
             green.append(_m.count_green())
             with open(args.fname+'_'+str(n)+'.png','w') as f:
-                f.write(_m.show_green(green[n]))
+                f.write(_m.show_green())
     else:
         green = graph.green_between(args.steps)
     plt.plot(graph.green_between(args.steps))

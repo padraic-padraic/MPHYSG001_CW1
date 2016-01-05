@@ -22,6 +22,7 @@ class Map(object):
         # Fetch our PNG image data
         self.pixels = img.imread(StringIO(self.image))
         # Parse our PNG image as a numpy array
+    
     def green(self, threshold):
         """For a given pixel, determine if it's green based on <threshold>, and return a logical array over all pixels."""
         # Use NumPy to build an element-by-element logical array
@@ -34,7 +35,7 @@ class Map(object):
         """Count the number of green pixels"""
         return np.sum(self.green(threshold))
 
-    def show_green(self, data, threshold = 1.1):
+    def show_green(self, threshold = 1.1):
         """Save a PNG showing only the green spaces."""
         green = self.green(threshold)
         out = green[:, :, np.newaxis]*np.array([0, 1, 0])[np.newaxis,

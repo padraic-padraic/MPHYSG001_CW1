@@ -2,4 +2,4 @@ language: python
 python:
     - 2.7
 install: "pip install requests numpy geopy matplotlib coverage"
-script: nosetests --with-coverage --cover-package greengraph
+script: nosetests --with-coverage --cover-package greengraphgit 
