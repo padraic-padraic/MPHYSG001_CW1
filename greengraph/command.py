@@ -9,9 +9,9 @@ def default_filename():
 
 parser = argparse.ArgumentParser(description='A tool for calculating the amount of green between two places.')
 parser.add_argument("-t", "--to", help="Starting location", required=True, 
-                    dest='start', type=str)
+                    dest='start')
 parser.add_argument("-f", "--from", help="Ending location", required=True,
-                    dest='end', type=str)
+                    dest='end')
 parser.add_argument("-o", "--out", help="Output filename", type=str, 
                     dest='fname', default=default_filename())
 parser.add_argument("--save-maps", dest='save_png',

@@ -1,9 +1,10 @@
 from greengraph.graph import Greengraph
-from nose.tools import assert_equal
+# from nose.tools import assert_equal
 from nose.tools import assert_almost_equal
 from nose.tools import assert_raises
+# from nose.tools import with_setup
 
-graph = Greengraph('London', 'Chiacago')
+graph =  Greengraph('London', 'Chiacago')
 
 def test_geolocate():
     start, end = (graph.geolocate(graph.start), graph.geolocate(graph.end))
