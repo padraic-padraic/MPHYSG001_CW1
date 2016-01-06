@@ -24,6 +24,10 @@ def test_coodinates():
         graph.location_sequence((100.,0.),(45.,45.),20)
     with assert_raises(ValueError):
         graph.location_sequence((-100.,0.),(45.,45.),20)
+    with assert_raises(ValueError):
+        graph.location_sequence((90.,181.),(45.,45.),20)
+    with assert_raises(ValueError):
+        graph.location_sequence((0.,-181.),(45.,45.),20)
 
 def test_location_sequence():
     points = Greengraph.location_sequence(Greengraph('London','Texas'),
