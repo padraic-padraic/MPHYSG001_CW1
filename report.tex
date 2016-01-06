@@ -1,0 +1,72 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[a4paper,margin=2cm]{geometry}
+\usepackage[none]{hyphenat}
+\usepackage{minted}
+\usepackage{dirtytalk}
+\usepackage[T1]{fontenc}
+\usepackage[math]{iwona}
+\usepackage[colorlinks=true,urlcolor=blue]{hyperref}
+\usepackage{helvet}
+\renewcommand*{\familydefault}{\sfdefault}
+\begin{document}
+\title{MPHYSG001: Packaging Greengraph}
+\author{Padraic Calpin \\ PHDCA33}
+\maketitle
+
+\section*{Command Line Interface}
+\begin{listing*}
+\begin{minted}{bash}
+usage: greengraph [-h] -t START -f END [-o FILENAME]
+ [--save-maps] [-s STEPS]
+
+A tool for calculating the amount of green between two places, given 
+by the place name or a coordinate pair lat,lon.
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -t START, --to START  Starting location
+  -f END, --from END    Ending location
+  -o FILENAME, --out FILENAME
+                        Output filename
+  --save-maps           Save the amount of green at each step
+  -s STEPS, --steps STEPS
+                        Number of steps
+\end{minted}
+\caption{Help message for the greengraph command.}
+\end{listing*}
+
+\section*{Problems Encountered}
+The main difficulties I had with this assignment were regarding the tests. 
+
+Making the code installable with setup.py and creating a command line interface were relatively straightforward, but I found that coming up with effective tests required careful thought about what each function should be doing. 
+
+Additonally, it took some time to understand and feel comfortable with the usage of the Patch feature.
+
+\pagebreak
+
+\section*{Discussion of Open Source Practices}
+For python, the tools required to release a project are very mature; while greengraph is a relatively simple package, it only required a small glance at the setuptools documentation and a single definition to make it installable. Combined with mature portals like \url{github.com} and the \href{https://pypi.python.org/pypi}{PyPI} index, the raw cost of preparing software for release itself is minimal. 
+
+Instead, what could be considered the `cost' of the Open Source model is in lost revenue potential. When, for example, a \href{http://actimetrics.com/products/clocklab/}{LabView machine} can sell for \textsterling $\mathcal{O}(10^{3})$, this is understandable. However, there is a misconception that being Open Source somehow \textit{forbids} making money from software, which is expressly not true; the GPL, for example, clearly states
+
+\textit{\say{When we speak of free software, we are referring to freedom, not
+price.  Our General Public Licenses are designed to make sure that you
+have the freedom to distribute copies of free software (and charge for
+this service if you wish)...}}
+
+and indeed, several Open Source companies exist which create revenue from offering support, consultancy, or additional services related to the software they release. The GPL is by no means the only Open Source license, either, and it is possible to retain a close hand on intellectual property rights while still open-sourcing code. 
+
+The advantages of Open Source are, I feel, significant. Making code available opens it up to review, suggestions, and contributions by and from the community, helping a project to grow and mature. This is why I chose the GPL for this project; I think all software can benefit from being open and reviewable.
+
+The advantages of package managers and repositories are also, I think, significant, and far outweight any associated costs in terms of management time (which solutions like virtualenv help to mitigate.) By making it easy to find and install useful libraries and manage dependencies, these package managers allow projects to leverage existing, well maintained resources to do more. It's significant that package managers have been implemented for all manner of software, from programming languages (such as PyPI) to frameworks (such as Carthage or npm) to entire operating systems (Homebrew). 
+
+\section*{Building a community for a project}
+To develop a community of users, a package needs two things:
+\begin{description}
+    \item[1) Documentation] \hfill \\
+    To be useful, the code requires good documentation that allows others to make the most of the software itself. This can be done either using internal tools such as docstrings in Python, writing external documentation, or making use of features like Wikis/Documentation provided by portals like Github and PyPI.
+    \item[2) Feedback] \hfill \\
+    When users find errors in the code, or want to request or add additional functionality, there must be a mechanism to do so. Again, this can be achieved painlessly using the Issues feature on Github, or by hosting your own issue tracker. 
+\end{description}
+
+\end{document}
