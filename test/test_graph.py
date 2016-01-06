@@ -25,13 +25,10 @@ def test_coodinates():
     with assert_raises(ValueError):
         graph.location_sequence((-100.,0.),(45.,45.),20)
 
-def test_limits():
-    with assert_raises(RuntimeError):
-        while True:
-            graph.geolocate('Lapland')
+
 
 def test_location_sequence():
-    points = Greengraph.location_sequence(Greengraph('London','Chicago'),
+    points = Greengraph.location_sequence(Greengraph('London','Texas'),
                                          (10.,10.), (20.,20.), 10)
     diffs = [points[i][0] - points[i-1][0] for i in range(1,10)]
     for diff1, diff2 in combinations_with_replacement(diffs, 2):
@@ -41,5 +38,10 @@ def test_location_sequence():
 
 @patch('greengraph.google_map.Map.count_green')
 def test_green_between(mock_map):
-    Greengraph('London','Chicago').green_between(1)
+    Greengraph('London','New York').green_between(1)
     assert mock_map.called
+
+def test_limits():
+    with assert_raises(RuntimeError):
+        while True:
+            graph.geolocate('Lapland')
