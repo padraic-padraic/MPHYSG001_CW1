@@ -7,7 +7,7 @@ import argparse
 def default_filename():
     return datetime.now().strftime('%H%M%S-%d%m%Y')
 
-parser = argparse.ArgumentParser(description='A tool for calculating the amount of green between two places.')
+parser = argparse.ArgumentParser(description='A tool for calculating the amount of green between two places, given by the place name or a coordinate pair lat,lon.')
 parser.add_argument("-t", "--to", help="Starting location", required=True, 
                     dest='start')
 parser.add_argument("-f", "--from", help="Ending location", required=True,
