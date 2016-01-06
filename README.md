@@ -1,4 +1,4 @@
-# Greengraph Package: Assessment for PHYSGQ01
+# Greengraph Package: Assessment for PHYSGQ01 [![Build Status](https://travis-ci.org/padraic-padraic/MPHYSG001_CW1.svg?branch=master)](https://travis-ci.org/padraic-padraic/MPHYSG001_CW1)
 
 Greengraph is a package that allows you to calculate the amount of green space between two places. 
 
