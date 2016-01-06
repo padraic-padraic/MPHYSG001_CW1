@@ -1,0 +1,14 @@
+To cite greengraph in publications, please use:
+
+P. Calpin, GreenGraph, (2016), GitHub repository, https://github.com/padraic-padraic/MPHYSG001_CW1
+
+A BibTeX entry for LaTeX users is
+
+@misc{Calpin2016,
+  author = {Calpin, P.},
+  title = {GreenGraph},
+  year = {2016},
+  publisher = {GitHub},
+  journal = {GitHub repository},
+  howpublished = {\url{https://github.com/padraic-padraic/MPHYSG001_CW1}},
+}
