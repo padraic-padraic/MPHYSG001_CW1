@@ -1,4 +1,4 @@
-from greengraph import Greengraph
+from ..graph import Greengraph
 
 from itertools import combinations_with_replacement
 from nose.tools import assert_almost_equal

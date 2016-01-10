@@ -1,4 +1,4 @@
-from greengraph.command import parser, do_the_thing, process
+from ..command import parser, do_the_thing, process
 from mock import mock_open, patch
 
 def test_save_maps():
@@ -36,6 +36,7 @@ def test_do_the_thing_with_save(mock_geolocate,mock_location_sequence, mock_get,
     with patch('__builtin__.open',m,create=True):
         do_the_thing(args)
     assert m.called == True
+    assert m.call_count == 2
     mock_location_sequence.assert_called_with((10.,10.),(10.,10.),1)
     assert mock_count_green.called == True
     assert mock_show_green.called == True
